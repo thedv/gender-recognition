@@ -1,4 +1,4 @@
-# facial-recognition-python-django
+# gender-recognition
 Face detection and facial recognition along with recognized persons information fetched from database.
 
 General Languages and versions
