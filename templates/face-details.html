@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" >
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Face Details</title>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+        body {
+          background-image: url('https://t3.ftcdn.net/jpg/02/94/48/48/360_F_294484843_kMQHiVrRNUglK337oJFlyxAkbkIin3fN.jpg');
+          /* background-color: #FFDDAC; */
+          font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+          overflow-x: hidden;
+          width: calc(100vw - 40px);
+          margin: 0;
+          height: calc(100vh - 40px);
+          padding: 20px;
+        }
+      
+        #content-slider *:focus {
+  outline: 0;
+  height: 500px;
+  
+} 
+
+/* ----> wrapper */
+#content-slider .slider-wrap {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0px auto;
+  position: relative;
+  text-align: right;
+}
+
+#content-slider .slider-wrap.full {
+  width: 100%;
+  max-width: 100%;
+  text-align: center; 
+  border: none;
+}
+
+
+/* --------> Link style */
+#content-slider *:focus {
+  outline: 0;
+} 
+
+#content-slider a:hover {
+  color: #7FD4FD;
+  text-decoration: underline;
+}
+
+#content-slider a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+#content-slider a:hover,
+#content-slider a:active {
+  outline: 0;
+}
+
+/* -------> Responsive images (ensure images don't scale beyond their parents) */
+#content-slider img {
+  width: 100%;
+  height: -webkit-fill-available;
+  /* -o-object-fit: cover;
+  object-fit: cover; */
+  vertical-align: middle;
+  border: 0;
+}
+
+/* -------> Main */
+#content-slider .slider {
+  overflow: hidden;
+  width: 100%;
+  height: 35rem;
+  margin: 0 auto;       
+  position: relative;               
+}
+
+#content-slider .slider-inner {
+  width: 500%;          
+  line-height: 0;
+  display: flex;
+  height: inherit;
+
+  animation: 30s slidy infinite;
+  transition: all 2s ease-in-out; 
+}
+
+
+
+/* -------> Article */
+#content-slider .slider h2,
+#content-slider .slider-thumb h2 {
+  color: #fff;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+#content-slider .slider p,
+#content-slider .slider-thumb p {
+  color: #fffefe;
+  padding: 0;
+  margin: 0 0 1rem;
+  opacity: .8;
+  line-height: 1.2;
+}
+
+#content-slider .slider a,
+#content-slider .slider-thumb a {
+  font-weight: 700;
+  color: #00ABFA;
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+/* -------> Article IMg Slider */
+#content-slider .slider h1 { font-size: 1.5rem; line-height: 1.2; }
+
+#content-slider .slider p { font-size: 1.2rem; line-height: 1.2; }
+
+#content-slider .slider a { font-size: 1rem; line-height: 1.2; }
+
+/* -------> Article IMg Prev */
+#content-slider .slider-thumb h2 { font-size: 1rem; line-height: 1.2; }
+
+#content-slider .slider-thumb p { font-size: .875rem; line-height: 1.2; }
+
+#content-slider .slider-thumb a { font-size: .75rem; line-height: 1.2; }
+
+
+/* -------> Main Img */
+#content-slider figure {
+  margin: 0;
+  padding: 0;
+  width: 20%;
+  cursor: pointer;
+
+  transition: all 2s ease-in-out; 
+}
+
+#content-slider figure img {
+  width: 100%;
+  position: relative;
+}   
+
+/* -------> Max contrls img preview */ 
+#content-slider .slider-thumb {
+  width: 25%;
+  margin: 35rem 0% 0 0%;
+  text-align: center;
+  display: block;
+  z-index: 1000;
+  cursor: pointer;
+  position: absolute;
+}
+
+#content-slider .slider-thumb:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  opacity: .55;
+  transition: all .2s ease-in-out;
+}
+
+#content-slider .slider-thumb:hover:after {
+  opacity: 0;
+}
+
+#thumb-1 { left: 0; }
+#thumb-2 { left: 25%; }
+#thumb-3 { left: 50%; }
+#thumb-4 { left: 75%; }
+
+#content-slider input[type='radio'] {           
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  display: none;
+}
+
+#content-slider .slider-arrow-control {                   
+  position: absolute;
+  left: 0;
+  z-index: 15;          
+  top: 0%;
+  width: 100%;
+  height: 3.125rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#content-slider .slider-dot {
+  width: 9px;
+  height: 9px;
+  margin: 0 2px;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  z-index: 1000;
+  cursor: pointer;
+  border-radius: 100%;
+  border: 2px solid #00ABFA;
+  background: #00ABFA;
+
+  transition: all 0.3s ease-in-out; 
+}
+
+#content-slider .slider-dot-control {
+  padding: 1rem 0;
+  width: 100%;
+  bottom: 0;
+  z-index: 10;
+  position: absolute;
+  text-align: center;
+  /* background: rgba(0, 0, 0, 0.7); */
+  font-size: 0;
+  line-height: 0;
+}   
+
+#content-slider .slider-dot-control>label:hover { 
+  width: 9px; 
+  height: 9px; 
+  background: #FFF; 
+  border: 1px solid #00ABFA; 
+}     
+
+
+/* -------> Controls */ 
+
+
+#input-1:checked ~ .slider .slider-inner { margin-left: 0%;   }
+#input-2:checked ~ .slider .slider-inner { margin-left:-100%; }
+#input-3:checked ~ .slider .slider-inner { margin-left:-200%; }
+
+
+
+#input-1:checked ~ .slider-dot-control>label:nth-child(1) { opacity: 1; background: #fff; }
+#input-2:checked ~ .slider-dot-control>label:nth-child(2) { opacity: 1; background: #fff; }
+#input-3:checked ~ .slider-dot-control>label:nth-child(3) { opacity: 1; background: #fff; }
+
+
+
+#input-1:checked ~ #thumb-1:after { opacity: 0; }
+#input-2:checked ~ #thumb-2:after { opacity: 0; }
+#input-3:checked ~ #thumb-3:after { opacity: 0; }
+
+
+
+.slider-arrow-control>label:nth-child(2) {
+  width: 3.125rem;
+  height: 3.125rem;
+  top: 50%;
+  margin-top: -1.5625rem;
+  display: inline-block;
+  position: relative;           
+  cursor: pointer;
+}
+
+#input-1:checked ~ .slider-arrow-control>label:nth-child(2),
+#input-2:checked ~ .slider-arrow-control>label:nth-child(3),
+#input-3:checked ~ .slider-arrow-control>label:nth-child(1),
+#input-1:checked ~ .slider-arrow-control>label:nth-child(3),
+#input-2:checked ~ .slider-arrow-control>label:nth-child(1),
+#input-3:checked ~ .slider-arrow-control>label:nth-child(2)
+ {
+  width: 3.125rem;
+  height: 3.125rem;
+  top: 50%;
+  margin-top: -1.5625rem;
+  display: inline-block;
+  position: relative;           
+  cursor: pointer;
+}
+
+#input-1:checked ~ .slider-arrow-control>label:nth-child(2):after,
+#input-2:checked ~ .slider-arrow-control>label:nth-child(3):after,
+#input-3:checked ~ .slider-arrow-control>label:nth-child(1):after,
+#input-1:checked ~ .slider-arrow-control>label:nth-child(3):after,
+#input-2:checked ~ .slider-arrow-control>label:nth-child(1):after,
+#input-3:checked ~ .slider-arrow-control>label:nth-child(2):after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 2.125rem;
+  line-height: 3.125rem;
+  color: #00ABFA;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 3.125rem;
+  background: rgba(0,0,0,.5);
+}
+
+#input-1:checked ~ .slider-arrow-control>label:nth-child(2),  
+#input-2:checked ~ .slider-arrow-control>label:nth-child(3), 
+#input-3:checked ~ .slider-arrow-control>label:nth-child(1)
+ {       
+  float: right;
+  right: 0;                      
+}
+
+#input-1:checked ~ .slider-arrow-control>label:nth-child(2):after,  
+#input-2:checked ~ .slider-arrow-control>label:nth-child(3):after, 
+#input-3:checked ~ .slider-arrow-control>label:nth-child(1):after 
+ {
+  content: "\f054";                     
+}
+
+#input-1:checked ~ .slider-arrow-control>label:nth-child(3),
+#input-2:checked ~ .slider-arrow-control>label:nth-child(1),
+#input-3:checked ~ .slider-arrow-control>label:nth-child(2) {   
+  float: left;
+  left: 0;           
+}
+
+#input-1:checked ~ .slider-arrow-control>label:nth-child(3):after,
+#input-2:checked ~ .slider-arrow-control>label:nth-child(1):after,
+#input-3:checked ~ .slider-arrow-control>label:nth-child(2):after {
+  content: "\f053";
+}
+
+/*#thumb-1:focus ~ .slider-inner { margin-left: 0%;   }
+#thumb-2:focus ~ .slider-inner { margin-left:-100%; }
+#thumb-3:focus ~ .slider-inner { margin-left:-200%; }
+#thumb-4:focus ~ .slider-inner { margin-left:-300%; }
+#thumb-5:focus ~ .slider-inner { margin-left:-400%; }*/
+
+#content-slider input:checked ~ .slider-inner {
+  animation: none;         
+}
+#content-slider input:hover ~ .slider-inner, 
+#content-slider label:hover ~ .slider-inner {
+  animation-play-state: paused;
+}
+#content-slider input:hover ~ .slider-inner, 
+#content-slider label:hover ~ .slider-inner {
+  animation-play-state: paused;
+}
+#content-slider span:focus ~ .slider-inner {
+  animation: none;         
+}
+#content-slider span:hover ~ .slider-inner {
+  animation-play-state: paused;
+}
+
+
+/* -------> Animation */
+/*
+@keyframes slidy {
+20% { margin-left:    0%; }
+25% { margin-left: -100%; }
+45% { margin-left: -100%; }
+50% { margin-left: -200%; }
+70% { margin-left: -200%; }
+75% { margin-left: -300%; }
+95% { margin-left: -300%; }
+100% { margin-left: -400%; }
+}*/
+
+
+/* -------> Responsive */
+@media (max-width: 992px) {
+  html {
+    font-size: 12px;
+  }
+
+  #content-slider .slider-thumb .head {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 10px;
+  }
+
+  #content-slider .slider .head {
+    display: none;
+  }
+
+  #content-slider .slider-dot { display: none; }
+
+  #content-slider .slider-arrow-control { display: block; }
+
+
+  #content-slider #thumb-2:focus { opacity: 1; } 
+
+  #thumb-2:focus ~ #thumb-5 { display: none; }
+
+  #content-slider #thumb-3:focus { opacity: 1; } 
+
+  #thumb-3:focus ~ #thumb-5 { display: none; }
+
+  #content-slider #thumb-4:focus { opacity: 1; } 
+
+  #thumb-4:focus ~ #thumb-5 { display: none; }
+
+}
+
+@media (max-width: 480px) {
+  #content-slider .slider-thumb img { display: none; }
+}
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+
+#title {
+    width: 100%;
+    position: absolute;
+    padding: 0px;
+    margin: 0px auto;
+    text-align: center;
+    font-size: 27px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Open Sans', sans-serif;
+    z-index: 9999;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), -1px 0px 2px rgba(255, 255, 255, 0);
+}
+        .big-card {
+          
+          /* background-color:	#404040; */
+          
+          width: calc(100vw - 40vw);
+          margin-left: 300px;
+          min-height: calc(100vh - 40px);
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          -ms-border-radius: 10px;
+          border-radius: 10px;
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+          background: rgba(0,0,0,0.6);
+        }
+        .bigcard-head {
+         
+          background: rgb(0 0 0 / 41%);
+          border-radius: inherit;
+          /* background-color: beige; */
+          display: flex;
+          padding: 10px;
+        }
+        .bigcard-head button {
+          width: max-content;
+          text-align: center;
+        }
+        
+        .bigcard-layout {
+          /* background-image: url('https://ak.picdn.net/shutterstock/videos/25589561/thumb/1.jpg'); */
+          /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIfQgkvet2bzIAC0hlMopA61o1Ey-_LvZNZg&usqp=CAU'); */
+          display: flex;
+          
+          /* height: calc(100vh - 120px); */
+          
+        }
+        .bigcard-layout .left-layout {
+          
+          border-left:0px;
+          /* background-image: url('https://ak.picdn.net/shutterstock/videos/27595450/thumb/1.jpg'); */
+
+          display: flex;
+          align-items: center;
+          height: 100%;
+          width: calc(50% - 20px);
+        }
+        .bigcard-layout .right-layout {
+          border-left: 1px solid #5c5c5c;
+          height: 100%;
+          width: calc(50% - 20px);
+          border-right: 0px;
+        }
+        .bigcard-layout .right-layout h5{
+          text-align: center;
+          margin: auto;
+        }
+        .bigcard-layout .right-layout .advertisements{
+          overflow: auto;
+          height: calc(100% - 20px);
+          padding: 0 20px;
+        }
+        .bigcard-layout .right-layout .advertisements .advertisement-card{
+          height: 200px;
+          width: 100%;
+          background-color: #f0f0f0;
+          margin: 10px 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .card {
+          border-radius: 6px;
+          overflow: hidden;
+          max-width: 300px;
+          width: 300px;
+          min-width: 200px;
+          max-height: 380px;
+          margin: 10px auto;
+          background-color: #e0e0e0;
+          text-align: center;
+        }
+        .card .header {
+          height: 20px;
+          background: #7F00FF;
+        }
+        .card .header .avatar {
+          width: 160px;
+            height: 100%;
+            position: relative;
+            
+            margin: 0 auto;
+        }
+        .card .header .avatar img {
+          display: block;
+            border-radius: 50%;
+            left: 10px;
+            height: 125px;
+            position: absolute;
+            bottom: -155px;
+            border: 4px solid white;
+        }
+        .card .card-body {
+          padding: 30px;
+          margin-top: 120px;
+        }
+        .card .card-body .user-meta {
+          padding-top: 20px;
+        }
+        .card .card-body .user-meta .username {
+          font-size: 18px;
+          font-weight: 600;
+        }
+        .card .card-body .user-meta .position {
+          font-size: 90%;
+          color: #7F00FF;
+        }
+        .card .user-bio {
+          padding-top: 8px;
+          font-size: 92%;
+          color: #191919;
+        }
+        .card .action {
+          padding-top: 20px;
+        }
+        .card .action .button {
+          padding: 16px 20px 16px 20px;
+          background: #7F00FF;
+          border-color: #7F00FF;
+          color: white;
+          border-radius: 100px;
+          transition: opacity 0.3s;
+          text-decoration: none;
+          font-size: 12px;
+        }
+        .card .action .button:hover {
+          opacity: 0.7;
+        }
+
+        .link-button {
+          padding: 3px 20px 16px 20px;
+          background: #7F00FF;
+          border-color: #7F00FF;
+          color: white;
+          border-radius: 100px;
+          transition: opacity 0.3s;
+          text-decoration: none;
+          font-size: 12px;
+          height: 24px;
+          outline: none;
+          cursor: pointer;
+        }
+        .link-button:hover {
+          opacity: 0.7;
+        }
+        @media (max-width: 750px) {
+          .bigcard-layout {
+            display: block;
+            height: auto;
+          }
+          .bigcard-layout .left-layout, .bigcard-layout .right-layout {
+            display: block;
+            width: auto;
+            border-left: 0;
+          }
+          .bigcard-layout .right-layout {
+            margin-top: 40px;
+          }
+        }
+        @media (max-width: 380px) {
+          .card {
+            width: max-content;
+          }
+        }
+        /* .head{
+          text-align: center;
+        }
+        .head p{
+
+        } */
+
+    </style>
+</head>
+  <body>
+    
+    <div class="big-card">
+      <div class="bigcard-head">
+        <button class="link-button" onclick="location.href='{% url 'index' %}'">Go Back</button>
+        <!-- <span class="head"><p>Advertisements</p></span> -->
+      </div>
+      
+        <div id="content-slider">
+          <div class="slider-wrap"> 
+            <!-- ===== Thumbnail ControlNav ======= -->         
+            <input type="radio" id="input-1" name="i" >         
+            <input type="radio" id="input-2" name="i" >         
+            <input type="radio" id="input-3" name="i" >
+           
+        
+            <nav class="slider-dot-control">
+              <label for="input-1" class="slider-dot"></label>
+              <label for="input-2" class="slider-dot"></label>
+              <label for="input-3" class="slider-dot"></label>
+             
+            </nav>
+        
+            <!-- =================================== -->    
+            <nav class="slider-arrow-control">
+              <label for="input-1"></label>
+              <label for="input-2"></label>
+              <label for="input-3"></label>
+             
+            </nav>
+            <!-- =================================== -->
+            <div class="slider">
+              <!-- <div class="slider-inner">
+                <figure>
+                  <a href="https://www.amazon.in/Pampers-New-Diapers-Pants-Count/dp/B07CXGJKXL" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/810H65hJfJL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                  <a href="https://www.amazon.in/Pampers-New-Diapers-Pants-Count/dp/B07CXGJKXL"> 
+                    
+                  </a> 
+                  
+                </figure>
+                <figure> 
+                  <a href="https://www.amazon.in/Nagar-International-Polyester-Mattress-Mosquito/dp/B0775YS8WR/ref=sr_1_15?dchild=1&keywords=baby&qid=1615620698&sr=8-15" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/81Mz5Fj0hyL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/Mamaearth-Moisturizing-Baby-Bathing-Oatmeal/dp/B07Q2B5Z9D/ref=sr_1_53?dchild=1&keywords=baby&qid=1615620698&sr=8-53" target="_blank"> 
+                    <img src="https://mamaearth.imgix.net/f/d/fds_9576.jpg?auto=format&fit=crop&w=600" alt="" id="3" class="slider-img fade">
+                    </a>
+                </figure>               
+              </div>
+            </div>   -->
+                             
+            {% if gender|stringformat:"s" == "Female" and age|stringformat:"s" == "(0-2)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.amazon.in/Pampers-New-Diapers-Pants-Count/dp/B07CXGJKXL" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/810H65hJfJL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                  <a href="https://www.amazon.in/Pampers-New-Diapers-Pants-Count/dp/B07CXGJKXL"> 
+                    
+                  </a> 
+                  
+                </figure>
+                <figure> 
+                  <a href="https://www.amazon.in/Nagar-International-Polyester-Mattress-Mosquito/dp/B0775YS8WR/ref=sr_1_15?dchild=1&keywords=baby&qid=1615620698&sr=8-15" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/81Mz5Fj0hyL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/Mamaearth-Moisturizing-Baby-Bathing-Oatmeal/dp/B07Q2B5Z9D/ref=sr_1_53?dchild=1&keywords=baby&qid=1615620698&sr=8-53" target="_blank"> 
+                    <img src="https://mamaearth.imgix.net/f/d/fds_9576.jpg?auto=format&fit=crop&w=600" alt="" id="3" class="slider-img fade">
+                    </a>
+                </figure>               
+              </div>
+            </div>                  
+            {% endif %}
+            {% if gender|stringformat:"s" == "Female" and age|stringformat:"s" == "(4-6)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.amazon.in/Backpack-Toddler-Animal-Cartoon-Pink-Minnie/dp/B089WF2DB5/ref=sr_1_19?dchild=1&keywords=gift+for+4+year+old+girl&qid=1615628206&sr=8-19" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/41XMRKMjFpL.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/BARBIE-Ultimate-Closet-Doll-Accessory/dp/B07NGX7TDN/ref=sr_1_10?dchild=1&keywords=barbie+set&qid=1615620880&sr=8-10" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/81c6oSzFKnL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a> 
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/Barbie-Kids-Play-Tent-House/dp/B07QMSLR9N/ref=sr_1_8?crid=O6P3IDY8KTDS&dchild=1&keywords=barbie+dream+house&qid=1615656126&s=toys&sprefix=bar%2Ctoys%2C310&sr=1-8" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/71a1mSlYikL._SL1074_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>               
+              </div>
+            </div>                  
+            {% endif %}
+            {% if gender|stringformat:"s" == "Female" and age|stringformat:"s" == "(8-12)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.amazon.in/Sanjis-Enterprises-Character-Crossbody-Multicolour/dp/B07X5TF7V9/ref=sr_1_55?crid=3AV51DWZ79N0L&dchild=1&keywords=gift+for+12+year+old+girl&qid=1615627921&sprefix=gift+for+12+%2Caps%2C288&sr=8-55" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/81WOwcji3vL._UL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>                
+                </figure>
+                <figure> 
+                  <a href="https://www.amazon.in/Chalk-Chuckles-Keychain-Dolls-Fundraiser/dp/B07QJ4ZBKT/ref=sr_1_33?crid=1Q2MEEF884LOF&dchild=1&keywords=8-12+years+kids&qid=1615621072&sprefix=8-12%2Caps%2C281&sr=8-33" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/91Yikq8DzAL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>                  
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/Rose-Petals-Elastics-Accessories-Multicolour/dp/B0834BNDK1/ref=sr_1_2?dchild=1&keywords=hair+pin+bands+for+girls&qid=1615656416&sr=8-2" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/71FPXCCrKNL._SL1300_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>                  
+                </figure>               
+              </div>
+            </div>                  
+            {% endif %}
+            {% if gender|stringformat:"s" == "Female" and age|stringformat:"s" == "(15-20)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.amazon.in/Aurex-Analouge-Resistant-Silver-AX-LR533-PKC/dp/B07G4BH3WX/ref=sr_1_7_mod_primary_lightning_deal?crid=3L15JBPZC1RCR&dchild=1&keywords=watch+for+15+years+girls&qid=1615628509&sbo=Tc8eqSFhUl4VwMzbE4fw%2Fw%3D%3D&smid=A3J0C20WD3WJ2I&sprefix=watch+for+15%2Caps%2C319&sr=8-7" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/81V-rGdaNmL._UL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>                  
+                </figure>
+                <figure> 
+                  <a href="https://www.amazon.in/Layerr-Wottagirl-Spray-Secret-Crush/dp/B00J59NEJG/ref=sr_1_11?dchild=1&keywords=perfume+for+20+year+old+girl&qid=1615635902&sr=8-11" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/5117jNq6XxL._SL1000_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/Maybelline-Loose-Finishing-Powder-Light/dp/B06XDZ93P5/ref=sr_1_1?dchild=1&keywords=15-20&qid=1615621374&sr=8-1" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/7165uHcY-mL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>                  
+                </figure>               
+              </div>
+            </div>                  
+            {% endif %}
+            {% if gender|stringformat:"s" == "Female" and age|stringformat:"s" == "(25-32)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.amazon.in/JAF-Makeup-Pieces-Brush-Blender/dp/B08J7WNB5D/ref=sr_1_4?crid=NFC0OSS3F7EN&dchild=1&keywords=makeup+kit&qid=1615629205&sprefix=make%2Caps%2C333&sr=8-4" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/41ay4MsSJBL.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>                  
+                </figure>
+                <figure> <a href="https://www.amazon.in/Lotus-Herbals-Natural-Radiance-Facial/dp/B007E9KUJQ/ref=sr_1_2_sspa?crid=2FUDY9YSLU97X&dchild=1&keywords=facial+kit+for+women&qid=1615636638&sprefix=facial+%2Caps%2C1708&sr=8-2-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzRURXRThMUVJFUEU5JmVuY3J5cHRlZElkPUEwNDg5NDY5M1BXRDJPOVhHVlRBSiZlbmNyeXB0ZWRBZElkPUEwMjA0ODc3MzQxS1ZBTUUyVE5JTCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU= " target="_blank"> 
+                  <img src="https://images-na.ssl-images-amazon.com/images/I/61WhyEEPRPL._SL1200_.jpg" alt="" id="1" class="slider-img fade" >
+                  </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/WOW-Science-Himalayan-Foaming-Built/dp/B08LGTDXD2/ref=sr_1_54_mod_primary_lightning_deal?dchild=1&keywords=beauty+products&qid=1615637168&sbo=Tc8eqSFhUl4VwMzbE4fw%2Fw%3D%3D&smid=A2WK4OB3ROODF0&sr=8-54" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/8180lbHKTZL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>               
+              </div>
+            </div>                  
+            {% endif %}
+            {% if gender|stringformat:"s" == "Female" and age|stringformat:"s" == "(38-43)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.tanishq.co.in/product/tanishq-22kt-gold-pendant-510406pjaaaa00 " target="_blank"> 
+                    <img src="https://staticimg.titan.co.in/Tanishq/Catalog/510406PJAAAA00_1.jpg?impolicy=pqmed&imwidth=640" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure> 
+                  <a href="https://www.tanishq.co.in/product/hoop-earring-503618hasaaa00" target="_blank"> 
+                    <img src="https://staticimg.titan.co.in/Tanishq/Catalog/503618HASAAA00_1.jpg?impolicy=pqmed&imwidth=640" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.tanishq.co.in/product/bangles-513314vcr1a00" target="_blank"> 
+                    <img src="https://staticimg.titan.co.in/Tanishq/Catalog/513314VCR1A00_1.jpg?impolicy=pqmed&imwidth=640" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>               
+              </div>
+            </div>                  
+            {% endif %}
+            {% if gender|stringformat:"s" == "Female" and age|stringformat:"s" == "(48-53)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.amazon.in/Designer-Printed-Available-WEDDING-CHEKRI-Pink_Free/dp/B07TZNHX8V/ref=sr_1_40_mod_primary_lightning_deal?dchild=1&hvadid=72705283098652&hvbmt=bb&hvdev=c&hvqmt=b&keywords=sarees+in+silk+in&qid=1615629893&sbo=Tc8eqSFhUl4VwMzbE4fw%2Fw%3D%3D&smid=AT95IG9ONZD7S&sr=8-40" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/81b-PxtraSL._UL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure> 
+                  <a href="https://www.amazon.in/Womens-Ethnic-Cotton-Salwar-Color_Free/dp/B07SPLPFDX/ref=sr_1_7?dchild=1&keywords=salwar+kamiz&qid=1615638869&sr=8-7" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/81M1HMdpPGL._UL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/Designer-Banarasi-Silk-Saree-ALIFA-ELEPHANT_RAMA_Free/dp/B085HS2G7N/ref=sr_1_3_mod_primary_lightning_deal?dchild=1&keywords=silk+saree&qid=1615656825&sbo=Tc8eqSFhUl4VwMzbE4fw%2Fw%3D%3D&smid=AT95IG9ONZD7S&sr=8-3" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/91WCQ88UV5L._UL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>               
+              </div>
+            </div>                  
+            {% endif %}
+            {% if gender|stringformat:"s" == "Female" and age|stringformat:"s" == "(60-100)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.amazon.in/Lifelong-LLM99-Massager-Motors-Brown/dp/B06ZZXBRTQ/ref=sr_1_3?crid=L7IEME4XQWPF&dchild=1&keywords=for+senior+citizens+gift&qid=1616175065&sprefix=for+senior+ci%2Caps%2C288&sr=8-3" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/71NG06okUvL._SX679_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/AmazonBasics-Gravity-Reclining-Lounge-Portable/dp/B071173FS8/ref=sr_1_18_sspa?adgrpid=60463440218&dchild=1&ext_vrnc=hi&gclid=CjwKCAiA4rGCBhAQEiwAelVti9gnZV2u_pyZLPE2F2EFJiW3ZgZ5raAJD3bQlIXnfvh1PqWdLzphShoCL_kQAvD_BwE&hvadid=294137952200&hvdev=c&hvlocphy=9062211&hvnetw=g&hvqmt=b&hvrand=1177264838120059726&hvtargid=kwd-871159971798&hydadcr=533_1742838&keywords=for+senior+citizens+gift&qid=1615642926&sr=8-18-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFPNjVPRllSS09LSEgmZW5jcnlwdGVkSWQ9QTAwODc1OTEyR0QzWVgyVkpKMkVIJmVuY3J5cHRlZEFkSWQ9QTA4Mjc2MzQyRDY4OFBWT1A2M1ZPJndpZGdldE5hbWU9c3BfbXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/A1Kl-V-RyHL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/Accu-Chek-Active-Glucose-strips-Multicolor/dp/B01GO0HBF6/ref=sr_1_16?adgrpid=106387744792&dchild=1&ext_vrnc=hi&gclid=CjwKCAiA4rGCBhAQEiwAelVti6oUTOyRteRTssX2JAko-Sm-UuNetOe7qC9ctOcL1ra_wXRRHNVnhBoCCJoQAvD_BwE&hvadid=453969525109&hvdev=c&hvlocphy=9062211&hvnetw=g&hvqmt=b&hvrand=3266181121202995847&hvtargid=kwd-301340842703&hydadcr=26453_2367119&keywords=amazonin&qid=1615643298&sr=8-16" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/71grSBGh9LL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>          
+              </div>
+            </div>                  
+            {% endif %}
+            
+            {% if gender|stringformat:"s" == "Male" and age|stringformat:"s" == "(0-2)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.amazon.in/Pampers-New-Diapers-Pants-Count/dp/B07CXGJKXL" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/810H65hJfJL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/Chinmay-Kids-Polycotton-Adjustable-Backpack/dp/B079SW6HB5/ref=sr_1_11?dchild=1&keywords=baby&qid=1615620698&sr=8-11" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/619pzGzjWtL._SL1000_.jpg" alt="" id="2" class="slider-img fade">
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/Mamaearth-Moisturizing-Baby-Bathing-Oatmeal/dp/B07Q2B5Z9D/ref=sr_1_53?dchild=1&keywords=baby&qid=1615620698&sr=8-53" target="_blank"> 
+                    <img src="https://mamaearth.imgix.net/f/d/fds_9576.jpg?auto=format&fit=crop&w=600" alt="" id="3" class="slider-img fade">
+                    </a>
+                </figure>               
+              </div>
+            </div>                  
+            {% endif %}
+            {% if gender|stringformat:"s" == "Male" and age|stringformat:"s" == "(4-6)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.amazon.in/Hero-Blast-Single-Speed-Yellow/dp/B00LHRPVSG/ref=sr_1_13?crid=23P11BDT4SH0C&dchild=1&keywords=cycle+for+5+years+boys&qid=1615615521&sprefix=cycle+for+5+%2Caps%2C317&sr=8-13" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/71qNvnhkieL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure> 
+                  <a href="https://www.amazon.in/FunBlast-Building-Blocks-Kids-Children/dp/B07SSG1T9J/ref=sr_1_19_sspa?crid=26S8FEY9IHSBJ&dchild=1&keywords=4-6+years+baby+toys&qid=1615620826&smid=A3LH2KKDFG65UB&sprefix=4-6%2Caps%2C272&sr=8-19-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExQ1RMQk5GSThONE1IJmVuY3J5cHRlZElkPUEwNTgzNDIyM1ZBRTFHSzNBUjhSQiZlbmNyeXB0ZWRBZElkPUEwNDM0MDEwWVdJSklXUEZQQ1Q5JndpZGdldE5hbWU9c3BfbXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/718ua4R%2BE%2BL._SL1454_.jpg" alt="" id="2" class="slider-img fade">
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/LEGO-60256-Racing-Cars/dp/B07W7TMP9M?ref_=ast_sto_dp" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/910-xyLV7KL._SL1500_.jpg" alt="" id="3" class="slider-img fade">
+                    </a>
+                </figure>               
+              </div>
+            </div>                  
+            {% endif %}
+            {% if gender|stringformat:"s" == "Male" and age|stringformat:"s" == "(8-12)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.amazon.in/SG-Kashmir-Cricket-youth-between/dp/B0714C7MG9/ref=sr_1_1?crid=TTYU4Q669ILR&dchild=1&keywords=cricket+kit+for+boys+of+9-12+years&qid=1615615358&sprefix=cricket+kit+for+boys+%2Caps%2C300&sr=8-1" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/81Eufj%2BgzeL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure> 
+                  <a href="https://www.whitehatjr.com/" target="_blank"> 
+                    <img src="https://gumlet.assettype.com/freepressjournal%2F2020-09%2F4d2ab788-3849-4fdd-9ed7-257eb36f535f%2FWhite_Hat_Jr.jpg?rect=34%2C0%2C836%2C470&format=webp&w=750&dpr=1.0" alt="" id="2" class="slider-img fade">
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/toyify-colourful-assorted-suitable-kg-Black/dp/B08B32NB8B?ref_=Oct_s9_apbd_orecs_hd_bw_b1VGpuJ&pf_rd_r=7MQDP65V23BTBCYY98GZ&pf_rd_p=26488060-9c94-5b73-bf3d-91e03c4c4f3b&pf_rd_s=merchandised-search-10&pf_rd_t=BROWSE&pf_rd_i=1378212031" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/51Fthzgp3qL.jpg" alt="" id="3" class="slider-img fade">
+                    </a>
+                </figure>               
+              </div>
+            </div>                  
+            {% endif %}
+            {% if gender|stringformat:"s" == "Male" and age|stringformat:"s" == "(15-20)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.amazon.in/HP-Pavilion-Processor-16-1-inch-16-a0021TX/dp/B08CGF74WT?ref_=ast_sto_dp" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/81I5CVygbUL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure> 
+                  <a href="https://www.amazon.in/b?ie=UTF8&node=21725163031" target="_blank"> 
+                    <img src="https://cdn.mos.cms.futurecdn.net/Vh6eSp4siwggK7RUys72nP.jpg" alt="" id="2" class="slider-img fade">
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/LeeRoo-Waterproof-Backpack-College-Business/dp/B08C9YN4TN/ref=sr_1_13?dchild=1&keywords=15-20&qid=1615621374&sr=8-13" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/71PpKzge3jL._UL1100_.jpg" alt="" id="3" class="slider-img fade">
+                    </a>
+                </figure>               
+              </div>
+            </div>                  
+            {% endif %}
+            {% if gender|stringformat:"s" == "Male" and age|stringformat:"s" == "(25-32)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.amazon.in/Park-Avenue-Essential-Grooming-kit/dp/B00G23S3S0/ref=sr_1_6?dchild=1&keywords=shaving+kit&qid=1616176646&sr=8-6" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/71ia2ifrL5L._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a> 
+                </figure>
+                <figure> 
+                  <a href="https://www.amazon.in/BODYFIT-Weight-Plates-Multipurpose-Bench/dp/B079SBZDYR/ref=asc_df_B079SBZDYR/?tag=googleshopdes-21&linkCode=df0&hvadid=396989527365&hvpos=&hvnetw=g&hvrand=5929775906926224571&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9062211&hvtargid=pla-977468852530&psc=1&ext_vrnc=hi" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/71ira2dL%2BaL._SL1500_.jpg" alt="" id="2" class="slider-img fade">
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/Man-Company-Beard-Moustache-Mooch/dp/B01J1KFWQG?ref_=ast_sto_dp             " target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/61D2CteQD3L._SL1100_.jpg" alt="" id="3" class="slider-img fade">
+                    </a>
+                </figure>               
+              </div>
+            </div>                  
+            {% endif %}
+            {% if gender|stringformat:"s" == "Male" and age|stringformat:"s" == "(38-43)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.bikewale.com/ktm-bikes/duke-250/" target="_blank"> 
+                    <img src="https://imgd.aeplcdn.com/1280x720/bw/models/ktm-250-duke-bs-vi20200805125938.jpg?q=80" alt="" id="3" class="slider-img fade">
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.bikedekho.com/royal-enfield/classic-350" target="_blank"> 
+                    <img src="https://bd.gaadicdn.com/processedimages/royal-enfield/royal-enfield-classic-350/source/royal-enfield-classic-3506030a20818efc.jpg?tr=w-439" alt="" id="3" class="slider-img fade">
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.cardekho.com/toyota-fortuner/car-price-in-mumbai.htm" target="_blank"> 
+                    <img src="https://stimg.cardekho.com/images/carexteriorimages/630x420/Toyota/Fortuner/8241/1609921660871/front-left-side-47.jpg?tr=w-295" alt="" id="3" class="slider-img fade">
+                    </a>
+                </figure>               
+              </div>
+            </div>                  
+            {% endif %}
+            {% if gender|stringformat:"s" == "Male" and age|stringformat:"s" == "(48-53)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.amazon.in/Saregama-Carvaan-Premium-Portable-Preloaded/dp/B08R958NX4/ref=pd_lpo_23_img_2/262-0455441-5551758?_encoding=UTF8&pd_rd_i=B08R958NX4&pd_rd_r=a1ea36e7-29e2-4ae7-ac4b-5272c00a3e55&pd_rd_w=aONU2&pd_rd_wg=Mimfm&pf_rd_p=64660ce8-10ea-4d01-b0da-415dc48b03a5&pf_rd_r=H31NGE0DSMKRKR7BYQ7V&psc=1&refRID=H31NGE0DSMKRKR7BYQ7V" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/716PZEgTOjL._SL1500_.jpg" alt="" id="3" class="slider-img fade">
+                    </a>
+                </figure>
+                <figure> 
+                  <a href="https://www.nykaaman.com/evaflor-whisky-vintage-eau-de-toilette/p/10390?ptype=product&skuId=10390&ef_id=CjwKCAiA4rGCBhAQEiwAelVtixTnSWv-cjD9WzE-CPPto6VEeyzeULQkiw-TBp3LMjFE38u0CZA32BoCQEwQAvD_BwE:G:s&s_kwcid=AL!599!3!438897407734!!!u!293946777986!&utm_source=GooglePaid&utm_medium=PLA&utm_campaign=PLA_Fullsite_NykaaMan" target="_blank"> 
+                    <img src="https://images-static.nykaa.com/media/catalog/product/tr:w-344,h-344,cm-pad_resize/8/8/889127.jpg" alt="" id="3" class="slider-img fade">
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/Movado-Chronograph-Sapphire-Resistant-Business/dp/B07VT35GQH/ref=sr_1_8?dchild=1&keywords=watches&qid=1615655719&refinements=p_36%3A3439821031&rnid=3439816031&s=watches&sr=1-8            :" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/41SOxILcCwL.jpg" alt="" id="3" class="slider-img fade">
+                    </a>
+                </figure>               
+              </div>
+            </div>                  
+            {% endif %}
+            {% if gender|stringformat:"s" == "Male" and age|stringformat:"s" == "(60-100)"  %}
+            <div class="slider">
+              <div class="slider-inner">
+                <figure>
+                  <a href="https://www.amazon.in/Lifelong-LLM99-Massager-Motors-Brown/dp/B06ZZXBRTQ/ref=sr_1_3?crid=L7IEME4XQWPF&dchild=1&keywords=for+senior+citizens+gift&qid=1616175065&sprefix=for+senior+ci%2Caps%2C288&sr=8-3" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/71NG06okUvL._SX679_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/AmazonBasics-Gravity-Reclining-Lounge-Portable/dp/B071173FS8/ref=sr_1_18_sspa?adgrpid=60463440218&dchild=1&ext_vrnc=hi&gclid=CjwKCAiA4rGCBhAQEiwAelVti9gnZV2u_pyZLPE2F2EFJiW3ZgZ5raAJD3bQlIXnfvh1PqWdLzphShoCL_kQAvD_BwE&hvadid=294137952200&hvdev=c&hvlocphy=9062211&hvnetw=g&hvqmt=b&hvrand=1177264838120059726&hvtargid=kwd-871159971798&hydadcr=533_1742838&keywords=for+senior+citizens+gift&qid=1615642926&sr=8-18-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFPNjVPRllSS09LSEgmZW5jcnlwdGVkSWQ9QTAwODc1OTEyR0QzWVgyVkpKMkVIJmVuY3J5cHRlZEFkSWQ9QTA4Mjc2MzQyRDY4OFBWT1A2M1ZPJndpZGdldE5hbWU9c3BfbXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/A1Kl-V-RyHL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>
+                <figure>
+                  <a href="https://www.amazon.in/Accu-Chek-Active-Glucose-strips-Multicolor/dp/B01GO0HBF6/ref=sr_1_16?adgrpid=106387744792&dchild=1&ext_vrnc=hi&gclid=CjwKCAiA4rGCBhAQEiwAelVti6oUTOyRteRTssX2JAko-Sm-UuNetOe7qC9ctOcL1ra_wXRRHNVnhBoCCJoQAvD_BwE&hvadid=453969525109&hvdev=c&hvlocphy=9062211&hvnetw=g&hvqmt=b&hvrand=3266181121202995847&hvtargid=kwd-301340842703&hydadcr=26453_2367119&keywords=amazonin&qid=1615643298&sr=8-16" target="_blank"> 
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/71grSBGh9LL._SL1500_.jpg" alt="" id="1" class="slider-img fade" >
+                    </a>
+                </figure>               
+              </div>
+            </div>                  
+            {% endif %}
+          </div>        
+        </div>
+      
+      
+      <div class="bigcard-layout">
+       
+          
+          <div class="card">
+            <div class="header">
+              <div class="avatar">
+                {% if gender|stringformat:"s" == "Female"  %}
+                <img src="https://www.shareicon.net/data/512x512/2016/07/26/802031_user_512x512.png" alt="">
+                {% else %}
+                <img src="data:image/jpeg;base64,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 " alt="">
+                {% endif %}
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="user-bio has-text-centered">
+                <p>Gender: {{gender}}</p>
+                <p>Age Group: {{age}}</p>
+              </div>
+              <div class="action has-text-centered">
+                <a href="{% url 'chart' %}" class="button is-small">VIEW CHARTS</a>
+              </div>
+            </div>
+          </div>
+        </div>
+     
+    </div>
+    <script>
+      // var slideIndex = 0;
+      // showSlides();
+      
+      // function showSlides() {
+      //   var i;
+      //   var slides = document.getElementsByClassName("slider-img");
+      //   var dots = document.getElementsByClassName("slider-dot");
+      //   for (i = 0; i < slides.length; i++) {
+      //     slides[i].style.display = "none";  
+      //   }
+      //   slideIndex++;
+      //   if (slideIndex > slides.length) {slideIndex = 1}    
+      //   for (i = 0; i < dots.length; i++) {
+      //     dots[i].className = dots[i].className.replace(" active", "");
+      //   }
+      //   slides[slideIndex-1].style.display = "block";  
+      //   dots[slideIndex-1].className += " active";
+      //   setTimeout(showSlides, 2000); // Change image every 2 seconds
+      // }
+      </script>
+  </body>
+</html>

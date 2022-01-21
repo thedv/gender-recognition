@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+<!-- title of page shown in tab -->
+{% block title %} Gender and Age Recognition | AI Course-work{% endblock %} 
+{% block content %}
+<div id="particles-js"></div>
+<div class="container" >
+  <div class="col-lg-12" style="background: rgba(0,0,0,0.6);margin-top:10em;margin-bottom:5em;padding-top:1em;padding-bottom:3em;color:#fff;border-radius:10px;-webkit-box-shadow: 2px 2px 15px 0px rgba(0, 3, 0, 0.7);
+-moz-box-shadow:    2px 2px 15px 0px rgba(0, 3, 0, 0.7);
+box-shadow:         2px 2px 15px 0px rgba(0, 3, 0, 0.7);">
+    <div class="col-lg-12">
+      <a href="/admin"><h5 class="text-right"><i class="fa fa-user-circle" aria-hidden="true"></i> Admin Panel</h5></a>
+      <a href="/records"><h5 class="text-right"><i  aria-hidden="true"></i>View Charts</h5></a>
+      <h1 class="text-center section-title" style="margin-bottom:2em">Gender and Age Recognition.</h1>
+    </div>
+    <style>
+      h4{
+        margin-bottom: 1.5em;
+      }
+      img{
+        border-radius:50%;
+        -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+     transition: all 0.3s ease-in-out;
+      }
+      img:hover{
+        -webkit-box-shadow: 2px 2px 21px 0px rgba(0, 3, 0, 0.91);
+        -moz-box-shadow:    2px 2px 21px 0px rgba(0, 3, 0, 0.91);
+        box-shadow:         2px 2px 21px 0px rgba(0, 3, 0, 0.91);
+        border:2px solid #fff;
+      }
+      h3{
+        margin-bottom: 1.3em;
+      }
+      a{
+        color:inherit
+      }
+      a:hover{
+        color:inherit;
+        text-decoration: none;
+      }
+      .section-title:after {
+        	content:' ';display:block;margin:0 auto;width:100px;margin-top: 6px;border:2px solid #d0d0d0;border-radius:4px;
+        	-webkit-border-radius:4px;
+        	-moz-border-radius:4px;
+        	box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+        	-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+        	-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+          margin-bottom:1em;
+        }
+    </style>
+
+    <div class="row">
+      <div class="col-md-6" style="border-right: 2px solid;">
+        <h3 class="text-center">Using Image</h3>
+        <div class="col-md-3"></div>
+        <div class="col-md-5" style="margin-left: 20px;">
+          <form id="target" action="detect_image" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="file-input" style="cursor:pointer">
+              <img src="{% static 'img/photo.png' %}" class="img-responsive" />
+            </label>
+            <input id="file-input" name="userImage" type="file" style="display: none;" accept="image/*"/>
+          </form>
+          <script>
+            $('#file-input').change(function() {
+              $('#target').submit();
+            });
+          </script>
+          <h4 class="text-center">Detect Image</h4>
+        </div>
+       
+      </div>
+      <div class="col-md-6" class="di">
+        <h3 class="text-center">With webcam</h3>
+        <div class="col-md-4" >
+        </div>
+        <div class="col-md-5">
+          <a href="/detect"><img src="{% static 'img/webcam.png' %}" class="img-responsive" /></a>
+          <h4 class="text-center">Detect By Webcam</h4>
+        </div>
+        <div class="col-md-4" > 
+        </div>
+       
+      </div>
+      
+    </div>
+</div><!-- Container -->
+
+</div>
+
+{% endblock %}

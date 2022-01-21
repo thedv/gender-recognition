@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+{% block title %}Image Recognition | AI Course-work{% endblock %}
+{% block content %}
+  
+<html>
+  <head>
+    <title>Video Live Stream</title>
+  </head>
+  <body>
+    <h1>Video Live Stream</h1>
+    <img src="{% url 'video_feed' %}">
+    
+  </body>
+</html>
+      
+{% endblock %}

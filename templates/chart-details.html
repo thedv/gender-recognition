@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart Details</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+        body {
+          background-color: #FFDDAC;
+          font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+          overflow-x: hidden;
+          width: calc(100vw - 40px);
+          margin: 0;
+          height: calc(100vh - 40px);
+          padding: 20px;
+        }
+        .big-card {
+          background-color: white;
+          width: calc(100vw - 40px);
+          min-height: calc(100vh - 40px);
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          -ms-border-radius: 10px;
+          border-radius: 10px;
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+        }
+        .bigcard-head {
+          display: flex;
+          padding: 20px;
+        }
+        .bigcard-head button {
+          width: max-content;
+          text-align: center;
+        }
+
+        .bigcard-layout {
+          display: flex;
+          height: calc(100vh - 180px);
+          padding: 20px;
+        }
+        .link-button {
+          padding: 3px 20px 16px 20px;
+          background: #7F00FF;
+          border-color: #7F00FF;
+          color: white;
+          border-radius: 100px;
+          transition: opacity 0.3s;
+          text-decoration: none;
+          font-size: 12px;
+          height: 24px;
+          outline: none;
+          cursor: pointer;
+        }
+        .link-button:hover {
+          opacity: 0.7;
+        }
+
+    </style>
+</head>
+  <body>
+    <div class="big-card">
+      <div class="bigcard-head">
+        <button class="link-button" onclick="location.href='{% url 'index' %}'">Go Home</button>
+      </div>
+      <div class="bigcard-layout">
+        <canvas id="ctx" ></canvas>
+      </div>
+    </div>
+    <script>
+      const sampleJSON = 
+      [
+        {
+          gender: 'Male',
+          age: '0-2',
+        },
+        {
+          gender: 'Male',
+          age: '4-6',
+        },
+        {
+          gender: 'Female',
+          age: '4-6',
+        },
+        {
+          gender: 'Female',
+          age: '8-12',
+        },
+        {
+          gender: 'Male',
+          age: '15-20',
+        },
+        {
+          gender: 'Female',
+          age: '25-32',
+        },
+        {
+          gender: 'Male',
+          age: '38-43',
+        },
+        {
+          gender: 'Female',
+          age: '60-100',
+        },
+        {
+          gender: 'Male',
+          age: '15-20',
+        },
+        {
+          gender: 'Male',
+          age: '0-2',
+        },
+        {
+          gender: 'Male',
+          age: '4-6',
+        },
+        {
+          gender: 'Female',
+          age: '4-6',
+        },
+        {
+          gender: 'Female',
+          age: '8-12',
+        },
+        {
+          gender: 'Male',
+          age: '15-20',
+        },
+        {
+          gender: 'Female',
+          age: '25-32',
+        },
+        {
+          gender: 'Male',
+          age: '38-43',
+        },
+        {
+          gender: 'Female',
+          age: '60-100',
+        },
+        {
+          gender: 'Male',
+          age: '15-20',
+        },
+        {
+          gender: 'Female',
+          age: '25-32',
+        },
+        {
+          gender: 'Male',
+          age: '25-32',
+        },
+       
+        {
+          gender: 'Male',
+          age: '15-20',
+        },
+        {
+          gender: 'Female',
+          age: '25-32',
+        },
+        {
+          gender: 'Male',
+          age: '25-32',
+        },
+       
+        {
+          gender: 'Male',
+          age: '15-20',
+        },
+        {
+          gender: 'Male',
+          age: '38-43',
+        },
+        {
+          gender: 'Female',
+          age: '60-100',
+        },
+        {
+          gender: 'Male',
+          age: '15-20',
+        },
+        {
+          gender: 'Female',
+          age: '25-32',
+        },
+        {
+          gender: 'Male',
+          age: '25-32',
+        },
+       
+        {
+          gender: 'Male',
+          age: '15-20',
+        },
+        {
+          gender: 'Female',
+          age: '25-32',
+        },
+        {
+          gender: 'Male',
+          age: '25-32',
+        },
+       
+        {
+          gender: 'Male',
+          age: '15-20',
+        } 
+      ]
+      const ageLabels = [...new Set(sampleJSON.map(item => item.age))].sort();
+      const genderDataSets = [
+        {
+          label: 'Male',
+          data: ageLabels.map(age=> { return sampleJSON.reduce((a,b)=>{ return b.age == age && b.gender == 'Male' ? a + 1 : a },0) }),
+          backgroundColor: '#22aa99'
+        },
+        {
+          label: 'Female',
+          data: ageLabels.map(age=> { return sampleJSON.reduce((a,b)=>{ return b.age == age && b.gender == 'Female' ? a + 1 : a },0) }),
+          backgroundColor: '#994499'
+        }
+      ]
+      console.log(ageLabels, genderDataSets)
+      var chart = new Chart(ctx, {
+   type: 'bar',
+   data: {
+      labels: ageLabels,
+      datasets: genderDataSets
+   },
+   options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      legend: {
+         position: 'right' 
+      },
+      scales: {
+         xAxes: [
+          {
+            barPercentage: 0.6,
+            stacked: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Age Groups'
+            }
+          }
+        ],
+         yAxes: [{
+            stacked: true 
+         }]
+      }
+   }
+});
+    </script>
+  </body>
+</html>
